@@ -1,68 +1,91 @@
 "use strict";
 
 {
-  // 　表
-  const table = document.querySelector("table");
-  // todo
-  const todo = document.querySelector("#todo");
-  // 優先度
-  const priority = document.querySelector("select");
-  // 締め切り
-  const deadline = document.querySelector('input[type ="date"]');
-  // 登録ボタン
-  const submit = document.querySelector("#submit");
+  const addTaskBtn = document.querySelector("#addBtn");
+  const textarea = document.querySelector("#text");
+  const deleteBtn = document.querySelector("#deleteBtn");
+  let states = false;
 
-  // 登録ボタンクリック時のイベント
+  let dataList = [];
+  const saveTodos = () => {
+    if (textarea.value.trim() ===""){
+      return;
+    };
+    localStorage.setItem("task", JSON.stringify(dataList));
+  };
 
-  submit.addEventListener("click", () => {
-    // 1行ごとの入力項目を入れるオブジェクトを作って値を代入
-    const items = {};
+  if (localStorage.getItem("task") === null) {
+    dataList = [];
+  } else {
+    dataList = JSON.parse(localStorage.getItem("task"));
+  }
+console.log(dataList);
 
-    // 未入力の時はダミー、今日の日付が入る
 
-    if (todo.value != "") {
-      items.todo = todo.value;
-    } else {
-      items.todo = "未入力";
+
+  // li要素を追加
+  addTaskBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    let dataObj = {};
+    dataObj.id = new Date().getTime();
+    dataObj.isCompleted = false;
+    dataObj.date = new Date().toLocaleString("ja-JP-u-ca-japanese"),
+    dataObj.content = textarea.value;
+    dataList.push(dataObj);
+    localStorage.task = JSON.stringify(dataList);
+
+    // リストに要素を追加
+    if (textarea.value.trim() === "") return;
+    const li = document.createElement("li");
+    const checkbox = document.createElement("input");
+    checkbox.checked = dataObj.isCompleted;
+
+    checkbox.addEventListener("change", () => {
+      dataList.forEach((item) => {
+        if (item.id === dataObj.id) {
+          item.isCompleted = !item.isCompleted;
+        }
+      });
+      saveTodos();
+    });
+    const p = document.createElement("p");
+    p.textContent = textarea.value;
+    const label = document.createElement("label");
+    label.appendChild(checkbox);
+    label.appendChild(p);
+    const xButton = document.createElement("button");
+    xButton.textContent = "x";
+    xButton.classList.add("xBtn");
+    checkbox.classList.add("checkbox");
+    checkbox.type = "checkbox";
+    checkbox.name = "tasks";
+    
+    li.appendChild(label);
+    li.appendChild(xButton);
+    
+    const ul = document.querySelector("#taskList");
+    ul.appendChild(li);
+    textarea.value = "";
+  });
+
+  function deleteRow() {
+    const checkedList = document.querySelectorAll("input[name =tasks]:checked");
+    console.log(checkedList);
+    if (checkedList.length === 0) {
+      return;
     }
-    items.priority = priority.value;
-    if (deadline.value != "") {
-      items.deadline = deadline.value;
-    } else {
-      items.deadline = new Date().toLocaleDateString().replace(/\//g, "-");
+    if (!confirm("削除しますか？")) {
+      return;
     }
-    items.done = false;
-
-    // リセット
-    todo.value = "";
-    priority.value = "普";
-    deadline.value = "";
-    todo.focus();
-
-    // trを作成・追加
-
-    const tr = document.createElement("tr");
-
-    // tdを作成、itemsのdone項目に来た時だけチェックボックスを作成
-    for (const prop in items) {
-      const td = document.createElement("td");
-      if (prop == "done") {
-        const checkbox = document.createElement("input");
-        checkbox.type = "checkbox";
-        checkbox.checked = items[prop];
-        td.appendChild(checkbox);
-      } else {
-        td.textContent = items[prop];
-      }
-
-      tr.appendChild(td);
-    }
-    table.appendChild(tr);
+    checkedList.forEach((check) => check.closest("li").remove());
+  }
+  // 削除
+  deleteBtn.addEventListener("click", () => {
+    deleteRow();
   });
 
 
-  // if ("done" == true){
-  //   done.style=
+  
 
-  // }
 }

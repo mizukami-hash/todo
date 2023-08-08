@@ -1,45 +1,47 @@
 <!DOCTYPE html>
-<html lang="ja">
-
+<html>
   <head>
-    <meta charset="utf-8" >
-    <link rel="preconnect" href="https://fonts.googleapis.com" >
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin >
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Kiwi+Maru&display=swap"
-      rel="stylesheet">
-    <meta name="viewport" content="width=device-width, initial-scale=1" > 
-    <link rel="stylesheet" href="style.css" >
-    <title>My TODOリスト</title>
-    <style>
-      .line-through {
-        text-decoration: line-through;
-      }
-    </style>
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sawarabi+Gothic&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>ToDo</title>
   </head>
+
   <body>
     <main>
-      <h1 id="h1">TODAY’S CHECKLIST</h1>
-      <div id="input">
-        <label>TODO: <input id="todo"></label><br>
-        優先度:
-        <select>
-          <option>低</option>
-          <option selected>普</option>
-          <option>高</option>
-        </select>
-        <label>締切: <input type="date"></label><br>
-        <button id="submit">登録</button>
+      <h1>ToDo List</h1>
+        <form class="form">
+          <input type="text" placeholder="add tasks" id="textArea" />
+          <button id="addBtn">
+            <span class="material-symbols-outlined"> add </span>
+          </button>
+        </form>
+
+      
+      <button id="deleteBtn">Delete checked item</button>
+
+      <div class="tasks">
+  
+        <!-- <div class="urgent"> -->
+          <div id="field">
+            <h3>todo</h3>
+            <ul id="taskList">
+
+            </ul>
+          <!-- </div> -->
       </div>
 
-      <table>
-        <tr>
-          <th id="todoLabel">TODO</th>
-          <th>優先度</th>
-          <th id="dateLabel">締切</th>
-          <th class="disabled">完了</th>
-        </tr>
-      </table>
+
     </main>
     <script src="main.js"></script>
   </body>
