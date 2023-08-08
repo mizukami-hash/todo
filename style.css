@@ -1,69 +1,86 @@
+@charset "utf-8";
+
 .material-symbols-outlined {
   font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 48;
 }
 * {
   font-family: "Sawarabi Gothic", sans-serif;
 }
-h1,
-h2,
-h3 {
+h1 {
   font-weight: normal;
-  font-size: 1.3rem;
-  margin: 0;
+  font-size: 1.7rem;
+  margin: 0 0 5px;
   padding: 0;
 }
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 16px;
+}
+li input:checked + span {
+  color: #aaa;
+  text-decoration: line-through;
+}
+li input {
+  margin-right: 8px;
+}
+li label {
+  margin-right: 8px;
+}
+
+button {
+  all: unset;
+  cursor: pointer;
+}
+
 div {
   margin: 0;
   padding: 0;
 }
 
 main {
-  width: 80%;
-  max-width: 800px;
-  margin: 0 auto;
+  width: 550px;
+  margin: 10px auto;
   padding: 30px 30px 50px;
   box-shadow: 0 0 10px 0 lightgray;
 }
 
-h3 {
-  color: black;
-  font-size: small;
-  margin-left: 5px;
-  margin-bottom: 2px;
+#all,
+#active,
+#purge,
+#comp {
+  border: 1px solid;
+  padding: 4px 8px;
+  border-radius: 5px;
+  margin: 20px 14px 20px 0;
+  font-size: 0.7rem;
 }
-h3 {
-  color: red;
-  font-weight: bold;
-}
-/* .urgent {
-  margin-bottom: 10px;
-} */
-
-button {
-  all: unset;
-  cursor: pointer;
-  /* margin-right:10px; */
-
-  /* position:absolute;/ */
-}
-.form {
+.btns {
   display: flex;
-  flex-wrap: wrap;
-  gap: 2%;
+  justify-content: start;
+}
+form {
   width: 250px;
   position: relative;
 }
-
-input {
-  height: 40px;
+form input {
+  padding: 2px;
+  height: 36px;
   width: 250px;
   margin-top: 4px;
 }
 
-.form button {
+form button {
   position: absolute;
-  top: 12px;
-  right: 0;
+  top: 15px;
+  right: 2px;
   opacity: 0.7;
 }
 
@@ -73,22 +90,14 @@ ul {
   padding: 0;
 }
 
-li input:checked + p{
-  color:#aaa;
+li input:checked + p {
+  color: #aaa;
   text-decoration: line-through;
 }
 
 .tasks {
   background-color: #eee;
   padding: 15px;
-}
-
-#field {
-  background-color: #f2bebe;
-  border: 1px solid #aaa;
-  padding: 4px 8px;
-  border-radius: 5px;
-  border: 2px red solid;
 }
 
 #completed {
@@ -99,69 +108,21 @@ li input:checked + p{
   margin-top: 6px;
   list-style: none;
 }
-#deleteBtn{
-  border:1px solid black;
-  padding:4px 8px;
+#deleteBtn {
+  border: 1px solid black;
+  padding: 4px 8px;
   border-radius: 5px;
   margin: 10px 0;
-  margin-left:75%;
-  font-size:.7rem;
-}
-
-li {
-  /* display: inline-block; */
-  align-items: center;
-  vertical-align: middle;
-  margin-bottom: -10px;
+  margin-left: 75%;
   font-size: 0.7rem;
-  /* justify-content: space-between; */
 }
 
-input[type="checkbox"] {
-  border: 1px solid black;
-  cursor: pointer;
-  padding: 0;
-  margin: 0;
-}
-.checkbox {
-  width: 16px;
-  vertical-align: middle;
+.hide {
+  display: none;
 }
 
-.checked {
-  color: red;
-  background-color: orange;
-}
-
-#listItems {
-  background-color: #f2bebe;
-}
-.today {
-  background-color: rgba(240, 163, 92, 0.3);
-  /* border:1px solid; */
-  padding: 0 4px;
-  font-size: 0.2rem;
-}
-.tomorrow {
-  background-color: rgb(227, 227, 198);
-  /* border:1px solid; */
-  padding: 0 4px;
-  font-size: 0.2rem;
-}
-p{
+p {
   display: inline-block;
   margin-right: 5px;
   margin-left: 10px;
-}
-
-.bold{
-  font-weight: bold;
-  font-size:.8rem;
-  color:rgb(121, 16, 16);
-}
-.xBtn{
-  border: 1px solid black;
-  cursor: pointer;
-  padding: 0 4px;;
- /* margin-left:300px; */
 }

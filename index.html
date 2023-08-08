@@ -1,47 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
     />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Sawarabi+Gothic&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="style.css" />
-    <title>ToDo</title>
+    <title>Todo</title>
   </head>
-
   <body>
     <main>
-      <h1>ToDo List</h1>
-        <form class="form">
-          <input type="text" placeholder="add tasks" id="textArea" />
-          <button id="addBtn">
-            <span class="material-symbols-outlined"> add </span>
-          </button>
-        </form>
-
-      
-      <button id="deleteBtn">Delete checked item</button>
-
-      <div class="tasks">
-  
-        <!-- <div class="urgent"> -->
-          <div id="field">
-            <h3>todo</h3>
-            <ul id="taskList">
-
-            </ul>
-          <!-- </div> -->
+      <h1>Todo List</h1>
+      <form id="add-form">
+        <input type="text" id="textArea" />
+        <button><span class="material-symbols-outlined"> add </span></button>
+      </form>
+      <div class="btns">
+        <button id="all">All</button>
+        <button id="active">Active</button>
+        <button id="comp">Completed</button>
+        <button id="purge">Delete checked item</button>
       </div>
 
-
+      <div class="tasks">
+        <ul id="todos"></ul>
+      </div>
     </main>
     <script src="main.js"></script>
   </body>
